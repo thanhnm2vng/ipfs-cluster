@@ -27,6 +27,7 @@ heavily recommend upgrading to go-ipfs v0.13.0 or later.
 
 * REST/PinSVC API: support JWT bearer token authorization | @1703
 * crdt: commit pending batched pins on shutdown | @1697 | 1719
+* Export a prometheus metric with the current disk informer value | @1725
 
 ##### Bug fixes
 
