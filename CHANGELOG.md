@@ -1,5 +1,90 @@
 # IPFS Cluster Changelog
 
+### v1.0.2 - 2022-06-XX
+
+IPFS Cluster v1.0.2 is a maintenance release with bug fixes and another
+iteration of the experimental support for the Pinning Services API that was
+introduced on v1.0.0, including Bearer token authorization support for both
+the REST and the Pinning Service APIs.
+
+This also the first release after moving the project from the "ipfs" to the
+the "ipfs-cluster" Github organization, which means the project Go modules
+have new paths (everything is redirected though). The Docker builds remain
+inside the "ipfs" namespace (i.e. `docker pull ipfs/ipfs-cluster`).
+
+IPFS Cluster is also ready to work with go-ipfs v0.13.0+. We recommend to upgrade.
+
+#### List of changes
+
+##### Breaking changes
+
+go-ipfs v0.13.0 introduced some changes to the Block/Put API. IPFS Cluster now
+uses the `cid-format` option. We believe the change does not affect adding
+blocks and that it should still work with previous go-ipfs versions, yet we
+heavily recommend upgrading to go-ipfs v0.13.0 or later.
+
+##### Features
+
+* REST/PinSVC API: support JWT bearer token authorization | @1703
+* crdt: commit pending batched pins on shutdown | @1697 | 1719
+
+##### Bug fixes
+
+* Fix adding large directories | @1691 | @1700
+* PinSVC API: fix compliance errors and bugs | @1704
+* Pintracker: fix missing and wrong values in PinStatus object fields for
+  recovered operations | @1705
+* ctl: fix "Exp" label showing the pin timestamp instead of the experiation date | @1666 | @1716
+* Pintracker: fix races causing wrong counts in metrics | @1717
+
+##### Other changes
+
+* Improve language, fix typos to changelog | @1667
+* Update comment in docker-compose | @1689
+* Migrate from ipfs/ipfs-cluster to ipfs-cluster/ipfs-cluster | @1694
+* Enable spell-checking and fix spelling errors (US locale) | @1695
+* Enable CodeQL analysis and fix security warnings | @1696
+* Dependency upgrades: libp2p-0.20.1 etc. | @1711 | @1712
+* API: improve debug logging during tls setup | @1715
+
+#### Upgrading notices
+
+##### Configuration changes
+
+There are no configuration changes for this release.
+
+##### REST API
+
+The REST API has a new `POST /token` endpoint, which returns a JSON object
+with a JWT token (when correctly authenticated).
+
+This token can be used to authenticate using `Authorization: Bearer <token>`
+header on subsequent requests.
+
+The token is tied and verified against a basic authentication user and
+password, as configured in the `basic_auth_credentials` field.
+
+At the moment we do not support revocation, expiration and other token
+options.
+
+##### Pinning Service API
+
+The Pinning Service API has a new `POST /token` endpoint, which returns a JSON object
+with a JWT token (when correctly authenticated). See the REST API section above.
+
+##### IPFS Proxy API
+
+No changes to IPFS Proxy API.
+
+##### Go APIs
+
+All cluster modules have new paths: every instance of "ipfs/ipfs-cluster" should now be "ipfs-cluster/ipfs-cluster".
+
+##### Other
+
+
+---
+
 ### v1.0.1 - 2022-05-06
 
 IPFS Cluster v1.0.1 is a maintenance release ironing out some issues and
