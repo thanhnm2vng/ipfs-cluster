@@ -44,7 +44,7 @@ heavily recommend upgrading to go-ipfs v0.13.0 or later.
 * Migrate from ipfs/ipfs-cluster to ipfs-cluster/ipfs-cluster | @1694
 * Enable spell-checking and fix spelling errors (US locale) | @1695
 * Enable CodeQL analysis and fix security warnings | @1696
-* Dependency upgrades: libp2p-0.20.1 etc. | @1711 | @1712
+* Dependency upgrades: libp2p-0.20.1 etc. | @1711 | @1712 | @1724
 * API: improve debug logging during tls setup | @1715
 
 #### Upgrading notices
