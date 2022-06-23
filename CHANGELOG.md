@@ -35,7 +35,7 @@ heavily recommend upgrading to go-ipfs v0.13.0 or later.
 * PinSVC API: fix compliance errors and bugs | @1704
 * Pintracker: fix missing and wrong values in PinStatus object fields for
   recovered operations | @1705
-* ctl: fix "Exp" label showing the pin timestamp instead of the experiation date | @1666 | @1716
+* ctl: fix "Exp" label showing the pin timestamp instead of the expiration date | @1666 | @1716
 * Pintracker: fix races causing wrong counts in metrics | @1717
 
 ##### Other changes
@@ -46,7 +46,7 @@ heavily recommend upgrading to go-ipfs v0.13.0 or later.
 * Enable spell-checking and fix spelling errors (US locale) | @1695
 * Enable CodeQL analysis and fix security warnings | @1696
 * Dependency upgrades: libp2p-0.20.1 etc. | @1711 | @1712 | @1724
-* API: improve debug logging during tls setup | @1715
+* API: improve debug logging during TLS setup | @1715
 
 #### Upgrading notices
 
@@ -65,7 +65,7 @@ header on subsequent requests.
 The token is tied and verified against a basic authentication user and
 password, as configured in the `basic_auth_credentials` field.
 
-At the moment we do not support revocation, expiration and other token
+At the moment we do not support revocation, expiration, and other token
 options.
 
 ##### Pinning Service API
