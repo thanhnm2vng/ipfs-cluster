@@ -20,6 +20,93 @@ spec:
     targetPort: 9096
     name:  proxy
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster-all-publish
+  namespace: "ipfs"
+spec:
+  type: LoadBalancer
+  # Uncomment the below line to create a Headless Service
+  #clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster-all-publish
+  namespace: "ipfs"
+spec:
+  type: LoadBalancer
+  # Uncomment the below line to create a Headless Service
+  #clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+    statefulset.kubernetes.io/pod-name: "ipfs-cluster-0"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster-all-publish
+  namespace: "ipfs"
+spec:
+  type: LoadBalancer
+  # Uncomment the below line to create a Headless Service
+  #clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+    statefulset.kubernetes.io/pod-name: "ipfs-cluster-1"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster-all-publish
+  namespace: "ipfs"
+spec:
+  type: LoadBalancer
+  # Uncomment the below line to create a Headless Service
+  #clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+    statefulset.kubernetes.io/pod-name: "ipfs-cluster-2"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
