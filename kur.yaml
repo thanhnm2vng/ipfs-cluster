@@ -1,0 +1,91 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster-all
+  namespace: "ipfs"
+spec:
+  #type: ClusterIP
+  # Uncomment the below line to create a Headless Service
+  clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+    name: "ipfs-cluster"
+    namespace: "ipfs"
+spec:
+  selector:
+    matchLabels:
+      app: "ipfs-cluster"
+      proj: "ipfs-cluster"
+  serviceName: "ipfs-cluster-all"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: "ipfs-cluster"
+        proj: "ipfs-cluster"
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: ipfs-cluster
+        image: gcr.io/nft-platform-345404/github.com/vnggames/ipfs-cluster:latest
+        readinessProbe:
+          tcpSocket:
+            port: 9094
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        # resources:
+        #   requests:
+        #     memory: "1Gi"
+        #     #cpu: "250m"
+        #   limits:
+        #     memory: "1Gi"
+        #     #cpu: "500m"
+        # env:
+        # - name: "ipfs-cluster_ZOOKEEPER_CONNECT"
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       key: "ipfs-cluster_ZOOKEEPER_CONNECT"
+        #       name: "ipfs-cluster-config-b1xy"
+        # - name: "ipfs-cluster_ADVERTISED_PORT"
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       key: "ipfs-cluster_ADVERTISED_PORT"
+        #       name: "ipfs-cluster-config-b1xy"
+        # - name: "ES_JAVA_OPTS"
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       key: "ES_JAVA_OPTS"
+        #       name: "ipfs-cluster-config-b1xy"
+        ports:
+        - containerPort: 9094
+          name: API
+        - containerPort: 9096
+          name: IPFSProxyEndpoint
+        volumeMounts:
+        - name: db
+          mountPath: /data/ipfs-cluster
+      nodeSelector:
+        #<labelname>:value
+        cloud.google.com/gke-nodepool: storage
+  volumeClaimTemplates:
+  - metadata:
+      name: db
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
