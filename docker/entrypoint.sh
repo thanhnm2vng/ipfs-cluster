@@ -3,6 +3,7 @@
 set -e
 user=ipfs
 nid=hostname | cut -d- -f3
+echo "nid=$nid"
 export CLUSTER_PEERNAME=`hostname`
 export CLUSTER_SECRET=""
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS=/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001
