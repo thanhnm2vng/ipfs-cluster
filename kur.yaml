@@ -80,7 +80,7 @@ spec:
           mountPath: /data/ipfs-cluster
       nodeSelector:
         #<labelname>:value
-        cloud.google.com/gke-nodepool: storage
+        cloud.google.com/gke-nodepool: compute
   volumeClaimTemplates:
   - metadata:
       name: db
