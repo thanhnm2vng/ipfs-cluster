@@ -72,9 +72,9 @@ spec:
         #       name: "ipfs-cluster-config-b1xy"
         ports:
         - containerPort: 9094
-          name: API
+          name: api
         - containerPort: 9096
-          name: IPFSProxyEndpoint
+          name: proxy
         volumeMounts:
         - name: db
           mountPath: /data/ipfs-cluster
