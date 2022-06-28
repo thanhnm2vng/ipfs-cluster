@@ -9,6 +9,8 @@ export CLUSTER_SECRET=""
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS=/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001
 export CLUSTER_CRDT_TRUSTEDPEERS="*"
 export CLUSTER_RESTAPI_HTTPLISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9094"
+export listen_multiaddress="/ip4/0.0.0.0/tcp/9095"
+
 export CLUSTER_MONITORPINGINTERVAL="2s"
 
 if [ -n "$DOCKER_DEBUG" ]; then
