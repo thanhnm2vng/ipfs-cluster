@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ipfs-cluster-all-publish
+  name: ipfs-cluster-publish0
   namespace: "ipfs"
 spec:
   type: LoadBalancer
@@ -66,7 +66,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ipfs-cluster-all-publish
+  name: ipfs-cluster-publish1
   namespace: "ipfs"
 spec:
   type: LoadBalancer
@@ -88,7 +88,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ipfs-cluster-all-publish
+  name: ipfs-cluster-publish2
   namespace: "ipfs"
 spec:
   type: LoadBalancer
