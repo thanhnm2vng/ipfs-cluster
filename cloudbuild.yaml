@@ -4,7 +4,7 @@ steps:
       - '-c'
       - >-
         docker pull
-        gcr.io/nft-platform-345404/github.com/vnggames/ipfs-cluster:$_PRE_COMMIT_SHA
+        gcr.io/nft-platform-345404/github.com/vnggames/ipfs-cluster:latest
         || exit 0
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-f','./Dockerfile', '-t', 'gcr.io/nft-platform-345404/github.com/vnggames/ipfs-cluster:latest', '.',"--cache-from","gcr.io/nft-platform-345404/github.com/vnggames/ipfs-cluster:latest"]
