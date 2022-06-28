@@ -2,14 +2,14 @@
 
 set -e
 user=ipfs
-nid=echo `hostname` | cut -d- -f2
+nid=echo "`hostname`" | cut -d- -f2
 export CLUSTER_PEERNAME=`hostname`
 export CLUSTER_SECRET="qwejwiqeoiwqjeoiwqd"
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS=/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001
 export CLUSTER_CRDT_TRUSTEDPEERS="*"
 export CLUSTER_RESTAPI_HTTPLISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9094"
 export CLUSTER_MONITORPINGINTERVAL="2s"
-
+#exit
 if [ -n "$DOCKER_DEBUG" ]; then
    set -x
 fi
