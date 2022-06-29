@@ -43,4 +43,4 @@ else
     ipfs-cluster-service init --consensus "${IPFS_CLUSTER_CONSENSUS}"
 fi
 
-exec ipfs-cluster-service --bootstrap '/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096' --debug $@
+exec ipfs-cluster-service --bootstrap --debug $@
