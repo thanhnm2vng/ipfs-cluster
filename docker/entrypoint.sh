@@ -4,8 +4,8 @@ set -e
 user=ipfs
 nid=`hostname | cut -d- -f3`
 echo "nid=$nid"
-#export CLUSTER_PEERNAME=`hostname`
-export CLUSTER_PEERNAME=peer
+export CLUSTER_PEERNAME=`hostname`
+#export CLUSTER_PEERNAME=peer
 
 export CLUSTER_SECRET="6578d6fd371f787bb805e7fb528bb9e26097e0f8b2b277430ecdfd282f02827e"
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
