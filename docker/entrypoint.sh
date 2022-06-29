@@ -43,8 +43,8 @@ else
     ipfs-cluster-service init --consensus "${IPFS_CLUSTER_CONSENSUS}"
 fi
 
-# exec ipfs-cluster-service --debug $@
-while true
-do
- sleep 100
-done
+exec ipfs-cluster-service --debug $@
+# while true
+# do
+#  sleep 100
+# done
