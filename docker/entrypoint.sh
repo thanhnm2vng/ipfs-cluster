@@ -4,7 +4,9 @@ set -e
 user=ipfs
 nid=`hostname | cut -d- -f3`
 echo "nid=$nid"
-export CLUSTER_PEERNAME=`hostname`
+#export CLUSTER_PEERNAME=`hostname`
+export CLUSTER_PEERNAME=peer
+
 export CLUSTER_SECRET=""
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
@@ -41,4 +43,4 @@ else
     ipfs-cluster-service init --consensus "${IPFS_CLUSTER_CONSENSUS}"
 fi
 
-exec ipfs-cluster-service $@ --debug
+exec ipfs-cluster-service $@
