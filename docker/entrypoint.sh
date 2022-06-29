@@ -43,4 +43,4 @@ else
     ipfs-cluster-service init --consensus "${IPFS_CLUSTER_CONSENSUS}"
 fi
 
-exec ipfs-cluster-service --bootstrap --debug $@
+exec ipfs-cluster-service --debug $@
