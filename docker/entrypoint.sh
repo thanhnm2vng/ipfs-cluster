@@ -7,7 +7,7 @@ echo "nid=$nid"
 #export CLUSTER_PEERNAME=`hostname`
 export CLUSTER_PEERNAME=peer
 
-export CLUSTER_SECRET=""
+export CLUSTER_SECRET="6578d6fd371f787bb805e7fb528bb9e26097e0f8b2b277430ecdfd282f02827e"
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096'
