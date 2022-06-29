@@ -8,7 +8,7 @@ export CLUSTER_PEERNAME=`hostname`
 export CLUSTER_SECRET=""
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
-export CLUSTER_PEERADDRESSES='/ip4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/ip4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/ip4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096'
+export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096,/dns4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096'
 echo $CLUSTER_IPFSHTTP_NODEMULTIADDRESS
 export CLUSTER_CRDT_TRUSTEDPEERS="*"
 export CLUSTER_RESTAPI_HTTPLISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9094"
