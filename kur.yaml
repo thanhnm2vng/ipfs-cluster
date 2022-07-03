@@ -23,6 +23,27 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: ipfs-cluster-all-internal
+  namespace: "ipfs"
+spec:
+  type: ClusterIP
+  # Uncomment the below line to create a Headless Service
+  #clusterIP: None
+  selector:
+    proj: "ipfs-cluster"
+  ports:
+  - protocol: TCP
+    port: 9094
+    targetPort: 9094
+    name: api 
+  - protocol: TCP
+    port: 9096
+    targetPort: 9096
+    name:  proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: ipfs-cluster-all-publish
   namespace: "ipfs"
 spec:
