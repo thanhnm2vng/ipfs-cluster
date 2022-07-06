@@ -32,6 +32,8 @@ myho=`hostname -f`
 if [ -f "${dir}/ho" ]; then
     echo "$FILE exists."
     nc -vz `cat ${dir}/ho` 9096 || annonce
+else 
+   annonce
 fi
 }
 
