@@ -48,7 +48,7 @@ export CLUSTER_IPFSPROXY_LISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9095"
 #export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/ip4/0.0.0.0/tcp/5001"
 #export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/ip4/0.0.0.0/tcp/5001"
 export CLUSTER_MONITORPINGINTERVAL="1s"
-export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1'
+export CLUSTER_PEERADDRESSES="`cat ${dir}/id`"
 
 if [ -n "$DOCKER_DEBUG" ]; then
    set -x
