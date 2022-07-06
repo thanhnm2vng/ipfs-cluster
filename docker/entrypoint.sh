@@ -11,10 +11,9 @@ export CLUSTER_SECRET="6578d6fd371f787bb805e7fb528bb9e26097e0f8b2b277430ecdfd282
 export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
  
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
-#export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1,/dns4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1,/dns4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWCnzCRCjo22RTe44WG7hungGGL9oUWJrWmDp6SdCDSsp5'
 
 annonce(){
-    mycid=`ipfs-cluster-ctl id | head -n1 | cut -d' ' -f1`
+mycid=`ipfs-cluster-ctl id | head -n1 | cut -d' ' -f1`
 myid="/dns4/`hostname -f`/tcp/9096/p2p/${mycid}"
 echo -ne "$myho" > ${dir}/ho
 
@@ -47,6 +46,7 @@ export CLUSTER_IPFSPROXY_LISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9095"
 #export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/ip4/0.0.0.0/tcp/5001"
 #export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/ip4/0.0.0.0/tcp/5001"
 export CLUSTER_MONITORPINGINTERVAL="1s"
+export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1'
 
 if [ -n "$DOCKER_DEBUG" ]; then
    set -x
