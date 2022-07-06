@@ -16,15 +16,16 @@ export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 
 annonce(){
-mycid=`ipfs-cluster-ctl id | head -n1 | cut -d' ' -f1`
-myid="/dns4/`hostname -f`/tcp/9096/p2p/${mycid}"
-echo -ne "$myho" > ${dir}/ho
 
 while ! nc -vz `cat ${dir}/ho` 9096
 do
     sleep 1
 done 
+mycid=`ipfs-cluster-ctl id | head -n1 | cut -d' ' -f1`
+myid="/dns4/`hostname -f`/tcp/9096/p2p/${mycid}"
+echo -ne "$myho" > ${dir}/ho
 echo -ne "$myid" > ${dir}/id
+echo ""
 }
 
 thefastestRun(){
