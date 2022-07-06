@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 set -e
 user=ipfs
@@ -12,6 +12,30 @@ export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.
  
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 #export CLUSTER_PEERADDRESSES='/dns4/ipfs-cluster-0.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1,/dns4/ipfs-cluster-1.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWQUrwiXtnm5NnDwAQebXpHQ3zC6hDNDKTSXJZLYA9TRx1,/dns4/ipfs-cluster-2.ipfs-cluster-all.ipfs.svc.cluster.local/tcp/9096/p2p/12D3KooWCnzCRCjo22RTe44WG7hungGGL9oUWJrWmDp6SdCDSsp5'
+
+annonce(){
+    mycid=`ipfs-cluster-ctl id | head -n1 | cut -d' ' -f1`
+myid="/dns4/`hostname -f`/tcp/9096/p2p/${mycid}"
+echo -ne "$myho" > ${dir}/ho
+
+while ! nc -vz `cat ${dir}/ho` 9096
+do
+    sleep 1
+done 
+echo -ne "$myid" > ${dir}/id
+}
+
+thefastestRun(){
+mkdir -p /data/info/clusteripfs/bootstraps
+dir="/data/info/clusteripfs/bootstraps"
+myho=`hostname -f`
+if [ -f "${dir}/ho" ]; then
+    echo "$FILE exists."
+    nc -vz `cat ${dir}/ho` 9096 || annonce
+fi
+}
+
+
 echo $CLUSTER_IPFSHTTP_NODEMULTIADDRESS
 export CLUSTER_CRDT_TRUSTEDPEERS="*"
 export CLUSTER_RESTAPI_HTTPLISTENMULTIADDRESS="/ip4/0.0.0.0/tcp/9094"
@@ -43,6 +67,7 @@ else
     echo "Initializing default configuration..."
     ipfs-cluster-service init --consensus "${IPFS_CLUSTER_CONSENSUS}"
 fi
+thefastestRun &
 
 exec ipfs-cluster-service --debug $@
 # while true

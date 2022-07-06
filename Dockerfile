@@ -56,6 +56,7 @@ RUN mkdir -p $IPFS_CLUSTER_PATH && \
     adduser -D -h $IPFS_CLUSTER_PATH -u 1000 -G users ipfs && \
     chown ipfs:users $IPFS_CLUSTER_PATH
 
+RUN apt-get update && apt-get install -y telnet net-tools procps bash netcat
 VOLUME $IPFS_CLUSTER_PATH
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/entrypoint.sh"]
 
