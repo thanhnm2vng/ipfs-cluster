@@ -4,6 +4,9 @@ set -e
 user=ipfs
 nid=`hostname | cut -d- -f3`
 echo "nid=$nid"
+mkdir -p /data/info/clusteripfs/bootstraps
+dir="/data/info/clusteripfs/bootstraps"
+
 export CLUSTER_PEERNAME=`hostname`
 #export CLUSTER_PEERNAME=peer
 
@@ -25,8 +28,6 @@ echo -ne "$myid" > ${dir}/id
 }
 
 thefastestRun(){
-mkdir -p /data/info/clusteripfs/bootstraps
-dir="/data/info/clusteripfs/bootstraps"
 myho=`hostname -f`
 if [ -f "${dir}/ho" ]; then
     echo "$FILE exists."
