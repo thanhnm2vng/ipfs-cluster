@@ -16,6 +16,7 @@ export CLUSTER_IPFSHTTP_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.
 export CLUSTER_IPFSPROXY_NODEMULTIADDRESS="/dns4/go-ipfs-${nid}.go-ipfs-all.ipfs.svc.cluster.local/tcp/5001"
 
 annonce(){
+myho=`hostname -f`
 echo -ne "$myho" > ${dir}/ho
 while ! nc -vz `cat ${dir}/ho` 9096
 do
@@ -28,7 +29,6 @@ echo ""
 }
 
 thefastestRun(){
-myho=`hostname -f`
 if [ -f "${dir}/ho" ]; then
     echo "$FILE exists."
     nc -vz `cat ${dir}/ho` 9096 || annonce
